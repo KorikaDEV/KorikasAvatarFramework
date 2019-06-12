@@ -8,10 +8,8 @@ using VRCSDK2;
 
 public class GestureDisplay {
 	public static void show(string name){
-		VRC_AvatarDescriptor[] vrcads = Object.FindObjectsOfType<VRC_AvatarDescriptor> ();
-		if (vrcads.Length > 0) {
-			VRC_AvatarDescriptor vrcad = vrcads[0];
-			GameObject avatar = vrcad.gameObject;
+		GameObject avatar = getVRCSceneAvatar();
+		if (avatar != null) {
 			Animator animator = avatar.GetComponent<Animator> ();
 			string path = "Assets/KATAvatars/" + avatar.name + "/Animations/";
 			if(animator.runtimeAnimatorController == null){
@@ -57,5 +55,14 @@ public class GestureDisplay {
 		AnimationClip fist = (AnimationClip)AssetDatabase.LoadAssetAtPath (path + name + ".anim", typeof(AnimationClip));
 		Motion fistmotion = (Motion)fist as Motion;
 		ac.AddMotion (fistmotion);
+	}
+	public static GameObject getVRCSceneAvatar(){
+		VRC_AvatarDescriptor[] vrcads = Object.FindObjectsOfType<VRC_AvatarDescriptor> ();
+		if (vrcads.Length > 0) {
+			VRC_AvatarDescriptor vrcad = vrcads[0];
+			GameObject avatar = vrcad.gameObject;
+			return avatar;
+		}
+		return null;
 	}
 }
