@@ -64,7 +64,7 @@ public class MainWindow : EditorWindow {
             break;
 		case 1:
 			toolbarInt = 1;
-			renderAnimationsTab ();
+			renderGenerationTab ();
 			break;
 		case 2:
 			toolbarInt = 2;
@@ -77,7 +77,7 @@ public class MainWindow : EditorWindow {
 
     }
 
-	public void renderAnimationsTab(){
+	public void renderGenerationTab(){
 		GUILayout.Label ("generate structure", EditorStyles.boldLabel);
 
 		model = (GameObject)EditorGUILayout.ObjectField ("select your avatar:", model, typeof(GameObject), true);
@@ -127,7 +127,6 @@ public class MainWindow : EditorWindow {
 		GUILayout.Label ("It wont copy contents inside the fingers");
 		GUI.enabled = true;
 	}
-
     public void RenderCreditsTab()
     {
         GUILayout.Label("These tools been coded by Korika!", EditorStyles.boldLabel);
@@ -152,7 +151,15 @@ public class MainWindow : EditorWindow {
 			Application.OpenURL("https://github.com/KorikaDEV");
 		}
     }
-
+	public void disableEveryCheck(){
+		fingerpoint = false;
+		fist = false;
+		victory = false;
+		handgun = false;
+		thumbsup = false;
+		rocknroll = false;
+		handopen = false;
+	}
     public void RenderGestureTab()
     {
         if (EditorApplication.isPlaying)
@@ -160,85 +167,50 @@ public class MainWindow : EditorWindow {
             fingerpoint = EditorGUILayout.Toggle("fingerpoint", fingerpoint);
             if (fingerpoint)
             {
+				disableEveryCheck();
                 fingerpoint = true;
-                fist = false;
-                victory = false;
-                handgun = false;
-                thumbsup = false;
-                rocknroll = false;
-                handopen = false;
 				string s = "FINGERPOINT";
 				GestureDisplay.show (s);
 }
             fist = EditorGUILayout.Toggle("fist", fist);
             if (fist)
             {
-                fingerpoint = false;
+                disableEveryCheck();
                 fist = true;
-                victory = false;
-                handgun = false;
-                thumbsup = false;
-                rocknroll = false;
-                handopen = false;
 				string s = "FIST";
 				GestureDisplay.show (s);            }
             victory = EditorGUILayout.Toggle("victory", victory);
             if (victory)
             {
-                fingerpoint = false;
-                fist = false;
+                disableEveryCheck();
                 victory = true;
-                handgun = false;
-                thumbsup = false;
-                rocknroll = false;
-                handopen = false;
 				string s = "VICTORY";
 				GestureDisplay.show (s);            }
             handgun = EditorGUILayout.Toggle("handgun", handgun);
             if (handgun)
             {
-                fingerpoint = false;
-                fist = false;
-                victory = false;
+                disableEveryCheck();
                 handgun = true;
-                thumbsup = false;
-                rocknroll = false;
-                handopen = false;
 				string s = "HANDGUN";
 				GestureDisplay.show (s);            }
             thumbsup = EditorGUILayout.Toggle("thumbsup", thumbsup);
             if (thumbsup)
             {
-                fingerpoint = false;
-                fist = false;
-                victory = false;
-                handgun = false;
+                disableEveryCheck();
                 thumbsup = true;
-                rocknroll = false;
-                handopen = false;
 				string s = "THUMBSUP";
 				GestureDisplay.show (s);            }
             rocknroll = EditorGUILayout.Toggle("rocknroll", rocknroll);
             if (rocknroll)
             {
-                fingerpoint = false;
-                fist = false;
-                victory = false;
-                handgun = false;
-                thumbsup = false;
+                disableEveryCheck();
                 rocknroll = true;
-                handopen = false;
 				string s = "ROCKNROLL";
 				GestureDisplay.show (s);            }
             handopen = EditorGUILayout.Toggle("handopen", handopen);
             if (handopen)
             {
-                fingerpoint = false;
-                fist = false;
-                victory = false;
-                handgun = false;
-                thumbsup = false;
-                rocknroll = false;
+                disableEveryCheck();
                 handopen = true;
 				string s = "HANDOPEN";
 				GestureDisplay.show (s);
@@ -247,13 +219,7 @@ public class MainWindow : EditorWindow {
         }
         else
         {
-			fingerpoint = false;
-			fist = false;
-			victory = false;
-			handgun = false;
-			thumbsup = false;
-			rocknroll = false;
-			handopen = false;
+			disableEveryCheck();
 			GUI.enabled = false;
 			fingerpoint = EditorGUILayout.Toggle("fingerpoint", fingerpoint);
 			fist = EditorGUILayout.Toggle("fist", fist);
