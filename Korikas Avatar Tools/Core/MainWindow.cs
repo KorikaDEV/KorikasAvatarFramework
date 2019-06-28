@@ -31,6 +31,13 @@ public class MainWindow : EditorWindow
     private static Texture2D tex;
     static Vector2 scrollPosition = Vector2.zero;
 
+    //BeatFinder options
+    static Color beatcolor = Color.white;
+    static Color betweencolor = Color.white;
+    static float zoom = 1.013f;
+    static float blur = 1;
+    static AudioClip audio;
+
     [MenuItem("Korikas Avatar Tools/Main")]
     public static void ShowWindow()
     {
@@ -105,24 +112,24 @@ public class MainWindow : EditorWindow
             GUI.enabled = true;
         }
         GUILayout.Label("generate beatfinder animation", EditorStyles.boldLabel);
-        beatfindersource = (GameObject)EditorGUILayout.ObjectField("your gameobject:", beatfindersource, typeof(GameObject), true);
         beatfinder = (TextAsset)EditorGUILayout.ObjectField("your beatfinder file:", beatfinder, typeof(TextAsset), true);
+        audio = (AudioClip)EditorGUILayout.ObjectField("your audio:", audio, typeof(AudioClip), true);
         bool beatbutton = false;
-        if(!(beatfindersource == null || beatfindersource == null)){
-            if(!BeatFinder.ifHasStructure(beatfindersource)){
-                GUI.enabled = false;
-                beatbutton = GUILayout.Button("setup not ready");
-                GUI.enabled = true;
-            }else{
-                beatbutton = GUILayout.Button("generate beatfinder animation");
-            }
+        beatcolor =  EditorGUILayout.ColorField("beatcolor:", beatcolor);
+        betweencolor =  EditorGUILayout.ColorField("color:", betweencolor);
+        GUILayout.Label("zoom:");
+        zoom = EditorGUILayout.Slider(zoom, 1, 2);
+        GUILayout.Label("blur:");
+        blur = EditorGUILayout.Slider(blur, 0, 5);
+        if(!(audio == null || beatfinder == null)){
+            beatbutton = GUILayout.Button("generate beatfinder animation");
         }else{
             GUI.enabled = false;
             beatbutton = GUILayout.Button("somethings missing");
             GUI.enabled = true;
         }
         if(beatbutton){
-            BeatFinder.generateBeatAnimation(beatfinder, beatfindersource);
+            BeatFinder.generateBeatAnimation(beatfinder, zoom, blur, beatcolor, betweencolor, audio);
         }
     }
 

@@ -4,32 +4,36 @@ using UnityEditor.Animations;
 using System.Collections.Generic;
 using System.Collections;
 using System;
-public class BeatFinder
+public class BeatFinder : MonoBehaviour
 {
 
-    public static void generateBeatAnimation(TextAsset text, GameObject source)
+    public static void generateBeatAnimation(TextAsset text, float zoom, float blur, Color beatcolor, Color betweencolor, AudioClip audio)
     {
+        GameObject source = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Korikas-Avatar-Tool/Korikas Avatar Tools/Examples/Prefabs/BeatFinderPrefab.prefab", typeof(GameObject));
+        string name = source.name;
+        source = (GameObject)Instantiate(source, new Vector3(0, 0, 0), Quaternion.identity);
+        source.name = name;
+
         float[] fl = textToFloatArray(text);
         AnimationClip ac = new AnimationClip();
         ac.legacy = true;
-        AddKeyFrames(typeof(MeshRenderer), fl, ac, "material._blurfactor", "zoom", 1f, 3f, 0.5f);
-        AddKeyFrames(typeof(MeshRenderer), fl, ac, "material._mag", "zoom", 1f, 1.013f, 0.5f);
+        AddKeyFrames(typeof(MeshRenderer), fl, ac, "material._blurfactor", "zoom", 0f, blur, 0.5f);
+        AddKeyFrames(typeof(MeshRenderer), fl, ac, "material._mag", "zoom", 1f, zoom, 0.5f);
         AddKeyFrames(typeof(GameObject), fl, ac, "m_IsActive", "trigger", 0f, 0.01f, 0.5f);
-        AddKeyFrames(typeof(MeshRenderer), fl, ac, "material._greenvalue", "zoom", 0.05f, 0f, 0.5f);
-        AddKeyFrames(typeof(MeshRenderer), fl, ac, "material._bluevalue", "zoom", 0.1f, 0.05f, 0.5f);
-        AddKeyFrames(typeof(MeshRenderer), fl, ac, "material._redvalue", "zoom", 0f, 0.05f, 0.5f);
-
+        AddKeyFrames(typeof(MeshRenderer), fl, ac, "material._greenvalue", "zoom", betweencolor.g, beatcolor.g, 0.5f);
+        AddKeyFrames(typeof(MeshRenderer), fl, ac, "material._bluevalue", "zoom", betweencolor.b, beatcolor.b, 0.5f);
+        AddKeyFrames(typeof(MeshRenderer), fl, ac, "material._redvalue", "zoom", betweencolor.r, beatcolor.r, 0.5f);
         AddKeyFrames(typeof(ParticleSystem), fl, ac, "simulationSpeed", "example", 0.5f, 1f, 0.5f);
 
         ac.legacy = false;
-        AssetDatabase.CreateAsset(ac, "Assets/BeatFinderOutput.anim");
+        AssetDatabase.CreateAsset(ac, "Assets/"+audio.name+".anim");
+
+        source.GetComponent<AudioSource>().clip = audio;
         Animator a = source.GetComponent<Animator>();
-        if(a.runtimeAnimatorController == null){
-			UnityEditor.Animations.AnimatorController acnew = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath ("Assets/animator.controller");
-			a.runtimeAnimatorController = acnew;
-		}
+        UnityEditor.Animations.AnimatorController acnew = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath ("Assets/"+audio.name+".controller");
+        a.runtimeAnimatorController = acnew;
         AnimatorController anc = a.runtimeAnimatorController as AnimatorController;
-        GestureDisplay.addMotionToController("BeatFinderOutput", anc, "Assets/");
+        GestureDisplay.addMotionToController(audio.name, anc, "Assets/");
     }
 
     private static void AddKeyFrames(Type kind, float[] fl, AnimationClip ac, string name, string path, float min, float max, float maxtimestamp)
