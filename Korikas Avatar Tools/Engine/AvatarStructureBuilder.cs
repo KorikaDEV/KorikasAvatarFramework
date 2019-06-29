@@ -102,7 +102,7 @@ public class AvatarStructureBuilder : MonoBehaviour{
 
 			SkinnedMeshRenderer head = meshes[0];
 			Mesh m = head.sharedMesh;
-			string[] blendshapes = {"sil","pp","ff","th","dd","kk","ch","ss","nn","rr","aa","ee","ih","oh","ou"}; 
+			string[] blendshapes = {"sil","pp","ff","th","dd","kk","ch","ss","nn","rr","aa","_e","ih","oh","ou"}; 
 			for (int i = 0; i < m.blendShapeCount; i++) {
 				string name = m.GetBlendShapeName(i);
 				for (int ii = 0; ii < blendshapes.Length; ii++) {
