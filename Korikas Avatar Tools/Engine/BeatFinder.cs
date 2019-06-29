@@ -33,7 +33,7 @@ public class BeatFinder : MonoBehaviour
         UnityEditor.Animations.AnimatorController acnew = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath ("Assets/"+audio.name+".controller");
         a.runtimeAnimatorController = acnew;
         AnimatorController anc = a.runtimeAnimatorController as AnimatorController;
-        GestureDisplay.addMotionToController(audio.name, anc, "Assets/");
+        GestureDisplay.addMotionToControllerByPath("Assets/"+audio.name+".anim", anc);
     }
 
     private static void AddKeyFrames(Type kind, float[] fl, AnimationClip ac, string name, string path, float min, float max, float maxtimestamp)

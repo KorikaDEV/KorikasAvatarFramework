@@ -26,35 +26,18 @@ public class GestureDisplay {
 		for (int i = 0; i < sm.states.Length; i++) {
 			sm.RemoveState (sm.states[i].state);
 		}
-
-		switch (name) {
-		case "FINGERPOINT":
-			addMotionToController ("fingerpoint", ac, path);
-			break;
-		case "FIST":
-			addMotionToController ("fist", ac, path);
-			break;
-		case "VICTORY":
-			addMotionToController ("victory", ac, path);
-			break;
-		case "HANDGUN":
-			addMotionToController ("handgun", ac, path);
-			break;
-		case "THUMBSUP":
-			addMotionToController ("thumbsup", ac, path);
-			break;
-		case "ROCKNROLL":
-			addMotionToController ("rocknroll", ac, path);
-			break;
-		case "HANDOPEN":
-			addMotionToController ("handopen", ac, path);
-			break;
-		}
+		addMotionToController (name, ac);
 	}
-	public static void addMotionToController(string name, UnityEditor.Animations.AnimatorController ac, string path){
-		AnimationClip fist = (AnimationClip)AssetDatabase.LoadAssetAtPath (path + name + ".anim", typeof(AnimationClip));
-		Motion fistmotion = (Motion)fist as Motion;
+	public static void addMotionToController(string name, UnityEditor.Animations.AnimatorController ac){
+		GameObject av = getVRCSceneAvatar();
+		AnimatorOverrideController controller = av.GetComponent<VRC_AvatarDescriptor>().CustomStandingAnims;
+		AnimationClip anclip = controller[name];
+		Motion fistmotion = (Motion)anclip as Motion;
 		ac.AddMotion (fistmotion);
+	}
+	public static void addMotionToControllerByPath(string path, UnityEditor.Animations.AnimatorController ac){
+		AnimationClip fist = (AnimationClip)AssetDatabase.LoadAssetAtPath (path, typeof(AnimationClip));
+		Motion fistmotion = (Motion)fist as Motion;
 	}
 	public static GameObject getVRCSceneAvatar(){
 		VRC_AvatarDescriptor[] vrcads = Object.FindObjectsOfType<VRC_AvatarDescriptor> ();

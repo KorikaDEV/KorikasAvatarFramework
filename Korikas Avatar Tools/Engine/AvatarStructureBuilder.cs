@@ -44,13 +44,13 @@ public class AvatarStructureBuilder : MonoBehaviour{
 			animator.runtimeAnimatorController = acnew;
 		}
 		AnimatorController ac = animator.runtimeAnimatorController as AnimatorController;
-		GestureDisplay.addMotionToController ("fingerpoint", ac, path);
-		GestureDisplay.addMotionToController ("fist", ac, path);
-		GestureDisplay.addMotionToController ("victory", ac, path);
-		GestureDisplay.addMotionToController ("handgun", ac, path);
-		GestureDisplay.addMotionToController ("thumbsup", ac, path);
-		GestureDisplay.addMotionToController ("rocknroll", ac, path);
-		GestureDisplay.addMotionToController ("handopen", ac, path);
+		GestureDisplay.addMotionToControllerByPath (path + "fingerpoint.anim", ac);
+		GestureDisplay.addMotionToControllerByPath (path + "fist.anim", ac);
+		GestureDisplay.addMotionToControllerByPath (path + "victory.anim", ac);
+		GestureDisplay.addMotionToControllerByPath (path + "handgun.anim", ac);
+		GestureDisplay.addMotionToControllerByPath (path + "thumbsup.anim", ac);
+		GestureDisplay.addMotionToControllerByPath (path + "rocknroll.anim", ac);
+		GestureDisplay.addMotionToControllerByPath (path + "handopen.anim", ac);
 
         newobj.name = nameval;
         AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(selected));
