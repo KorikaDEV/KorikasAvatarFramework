@@ -1,4 +1,5 @@
 # Korikas Avatar Tool
+![](https://img.shields.io/badge/for-Unity-blue.svg)
 [![](https://img.shields.io/github/release/KorikaDEV/Korikas-Avatar-Tool.svg)](https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases) ![](https://img.shields.io/github/languages/top/KorikaDEV/Korikas-Avatar-Tool.svg)
 ![](https://img.shields.io/codefactor/grade/github/KorikaDEV/Korikas-Avatar-Tool/master.svg)
 ![](https://img.shields.io/github/downloads/KorikaDEV/Korikas-Avatar-Tool/total.svg)
