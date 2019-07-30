@@ -2,9 +2,11 @@
 using UnityEngine;
 using UnityEditor.Animations;
 using VRCSDK2;
+using UnityEditor.SceneManagement;
 
 public class AvatarStructureBuilder : MonoBehaviour{
     public static void BuildOverride(GameObject selected) {
+		EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
 
         string nameval = selected.name;
 
