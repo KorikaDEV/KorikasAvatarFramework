@@ -16,7 +16,7 @@ I really fell in love with VRChat based unity tools and thats why I am trying to
 ## How do I use it?
 There will be a tutorial!
 ## Download
-https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases/tag/1.1.4
+[here](https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases/tag/1.1.4)
 ## Requirements
 - VRChats SDK
 - Dynamic Bones
