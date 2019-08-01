@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor.Animations;
 using VRCSDK2;
 using UnityEditor.SceneManagement;
+using KatStuff;
 
 public class AvatarStructureBuilder : MonoBehaviour
 {
@@ -64,6 +65,10 @@ public class AvatarStructureBuilder : MonoBehaviour
         GestureDisplay.addMotionToControllerByPath(path + "handopen.anim", ac);
 
         newobj.name = nameval;
+
+        KatProfile kp = new KatProfile(newobj);
+        kp.makeFile();
+
         AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(selected));
 
         VRC_AvatarDescriptor vrcad = newobj.AddComponent(typeof(VRC_AvatarDescriptor)) as VRC_AvatarDescriptor;
