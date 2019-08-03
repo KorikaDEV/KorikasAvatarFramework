@@ -67,7 +67,7 @@ public class AvatarStructureBuilder : MonoBehaviour
         newobj.name = nameval;
 
         KatProfile kp = new KatProfile(newobj);
-        kp.makeFile();
+        kp.saveFile();
 
         AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(selected));
 
