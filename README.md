@@ -5,7 +5,7 @@
 ![](https://img.shields.io/github/downloads/KorikaDEV/Korikas-Avatar-Tool/total.svg)
 ![](https://img.shields.io/github/commits-since/KorikaDEV/Korikas-Avatar-Tool/1.1.4.svg)
 
-## What does it?
+## What is KAT?
 Korikas Avatar Tool (KAT) is a huge collection of tools for making VRChat avatars!
 It manages your projects structure, generates animations, copies contents from avatar to avatar and will have a lot of other features in the future...
 ## Main Feature
