@@ -24,6 +24,7 @@ It manages your projects structure, generates animations, copies contents from a
 - a backup functionality, that saves your avatar on every modified scene save into a unitypackage to a self-assigned file location
 - hand-collider adding through UI with a possability to change the size and see their size in realtime
 - automatic collider adding to every dynamic bone on the model
+- automatic sdk updater, that can be toggled
 
 ## I found a bug!
 Congratulations! You're able to earn a costum discord role on my server, by telling me everything about the bug you found in #🐈need-help-with-kat! Here is the invite: [Discord](https://discord.gg/z2SmFqg)
@@ -32,7 +33,7 @@ I really fell in love with VRChat based unity tools and thats why I am trying to
 ## How do I use it?
 There will be a tutorial!
 ## Installation
-- download the latest version [here](https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases/tag/1.1.4)!
+- download the latest version [here](https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases/tag/2.0.0)!
 - drag and drop it into your Unity project
 ## Requirements
 - VRChats SDK
