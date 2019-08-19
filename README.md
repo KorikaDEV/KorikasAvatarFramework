@@ -3,7 +3,7 @@
 [![](https://img.shields.io/github/release/KorikaDEV/Korikas-Avatar-Tool.svg)](https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases) ![](https://img.shields.io/github/languages/top/KorikaDEV/Korikas-Avatar-Tool.svg)
 ![](https://img.shields.io/codefactor/grade/github/KorikaDEV/Korikas-Avatar-Tool/master.svg)
 ![](https://img.shields.io/github/downloads/KorikaDEV/Korikas-Avatar-Tool/total.svg)
-![](https://img.shields.io/github/commits-since/KorikaDEV/Korikas-Avatar-Tool/1.1.4.svg)
+![](https://img.shields.io/github/commits-since/KorikaDEV/Korikas-Avatar-Tool/2.0.0.svg)
 
 ## What is KAT?
 Korikas Avatar Tool (KAT) is a huge collection of tools for making VRChat avatars!
@@ -11,7 +11,7 @@ It manages your projects structure, generates animations, copies contents from a
 
 ### current features:
 - generating folders, animations, overrides and scenes for your avatar
-- adding automatic visemes to your model
+- automatic visemes on your model
 - easily setting up the viewpoint, with a gameobject
 - generating a beat based animation with the beatfinder tool of audacity and KAT
 - playing any animation of the avatars override in play-mode
