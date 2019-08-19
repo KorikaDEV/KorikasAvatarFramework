@@ -8,6 +8,22 @@
 ## What is KAT?
 Korikas Avatar Tool (KAT) is a huge collection of tools for making VRChat avatars!
 It manages your projects structure, generates animations, copies contents from avatar to avatar and will have a lot of other features in the future...
+
+### current features:
+- generating folders, animations, overrides and scenes for your avatar
+- adding automatic visemes to your model
+- easily setting up the viewpoint, with a gameobject
+- generating a beat based animation with the beatfinder tool of audacity and KAT
+- playing any animation of the avatars override in play-mode
+- listing your avatars, that you have kat-imported and see their performance statistik
+- delete avatars, open their scene or clean/locate their folder in the avatars list
+
+### future implementations:
+- a animator for easy keyframing
+- a backup functionality, that saves your avatar on every modified scene save into a unitypackage to a self-assigned file location
+- hand-collider adding through UI with a possability to change the size and see their size in realtime
+- automatic collider adding to every dynamic bone on the model
+
 ## Main Feature
 The main-feature of the plugin is the generation of the project structure that works like in this gif:
 ![](https://raw.githubusercontent.com/KorikaDEV/Korikas-Avatar-Tool/master/how%20it%20goes.gif)
