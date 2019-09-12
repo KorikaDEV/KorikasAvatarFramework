@@ -11,8 +11,8 @@
 - [I found a bug!](https://github.com/KorikaDEV/Korikas-Avatar-Tool#i-found-a-bug)
 - [Where are the ideas coming from?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#where-are-the-ideas-coming-from)
 - [How do I use it?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#how-do-i-use-it)
-  - [Installation](https://github.com/KorikaDEV/Korikas-Avatar-Tool#installation)
-  - [Requirements](https://github.com/KorikaDEV/Korikas-Avatar-Tool#requirements)
+  - [installation](https://github.com/KorikaDEV/Korikas-Avatar-Tool#installation)
+  - [requirements](https://github.com/KorikaDEV/Korikas-Avatar-Tool#requirements)
 - [Links](https://github.com/KorikaDEV/Korikas-Avatar-Tool#links)
 
 ## What is KAT?
