@@ -4,7 +4,16 @@
 [![](https://img.shields.io/github/release/KorikaDEV/Korikas-Avatar-Tool.svg)](https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases) ![](https://img.shields.io/github/languages/top/KorikaDEV/Korikas-Avatar-Tool.svg)
 ![](https://img.shields.io/codefactor/grade/github/KorikaDEV/Korikas-Avatar-Tool/master.svg)
 ![](https://img.shields.io/github/downloads/KorikaDEV/Korikas-Avatar-Tool/total.svg)
-![](https://img.shields.io/github/commits-since/KorikaDEV/Korikas-Avatar-Tool/2.0.0.svg)
+
+- [What is KAT?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#what-is-kat)
+  - [current features](https://github.com/KorikaDEV/Korikas-Avatar-Tool#current-features)
+  - [future implementations](https://github.com/KorikaDEV/Korikas-Avatar-Tool#future-implementations)
+- [I found a bug!](https://github.com/KorikaDEV/Korikas-Avatar-Tool#i-found-a-bug)
+- [Where are the ideas coming from?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#where-are-the-ideas-coming-from)
+- [How do I use it?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#how-do-i-use-it)
+  - [Installation](https://github.com/KorikaDEV/Korikas-Avatar-Tool#installation)
+  - [Requirements](https://github.com/KorikaDEV/Korikas-Avatar-Tool#requirements)
+- [Links](https://github.com/KorikaDEV/Korikas-Avatar-Tool#links)
 
 ## What is KAT?
 Korikas Avatar Tool (KAT) is a huge collection of tools for making VRChat avatars!
@@ -32,10 +41,10 @@ Congratulations! You're able to earn a costum discord role on my server, by tell
 I really fell in love with VRChat based unity tools and thats why I am trying to gather them all into one usefull plugin. Thats the reason, why you will find some features in other projects based on VRChat! That doesnt mean, that I steal code. Everything within this project is self-implemented and I wish, that where was some kind of way, to show you that Im not stealing your credentails!
 ## How do I use it?
 There will be a tutorial!
-## Installation
+### installation
 - download the latest version [here](https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases/tag/2.0.0)!
 - drag and drop it into your Unity project
-## Requirements
+### requirements
 - VRChats SDK
 - Dynamic Bones
 ## Links
