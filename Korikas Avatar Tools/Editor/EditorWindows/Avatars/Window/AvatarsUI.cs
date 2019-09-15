@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using KATStuff;
-public class AvatarsWindow : EditorWindow
+public class AvatarsUI : EditorWindow
 {
     static Vector2 scrollPosition = Vector2.zero;
     static GameObject model;
@@ -10,7 +10,7 @@ public class AvatarsWindow : EditorWindow
     public static void ShowWindow()
     {
         AvatarStructureBuilder.createKATRootFolder();
-        EditorWindow window = EditorWindow.GetWindow<AvatarsWindow>("KATAvatars");
+        EditorWindow window = EditorWindow.GetWindow<AvatarsUI>("KATAvatars");
         window.minSize = new Vector2(265, 265);
     }
     void OnGUI()
