@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: zoom
-  m_Shader: {fileID: 4800000, guid: bbf97228635bacb4dac8ded9526d7649, type: 3}
+  m_Shader: {fileID: 4800000, guid: b5ebde4f2c3131048947de50da9a5153, type: 3}
   m_ShaderKeywords: BLUR_ENABLED MAGNIFIED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

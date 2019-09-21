@@ -59,7 +59,7 @@ public class AvatarStructureBuilder : MonoBehaviour
 
         GameObject newobjanimator = (GameObject)Instantiate(newobj, new Vector3(0, 0, 0), Quaternion.identity);
         newobjanimator.name = "animator";
-        newobjanimator.active = false;
+        newobjanimator.SetActive(false);
         Animator animator = newobjanimator.GetComponent<Animator>();
         string path = "Assets/KATAvatars/" + nameval + "/Animations/";
         if (animator.runtimeAnimatorController == null)

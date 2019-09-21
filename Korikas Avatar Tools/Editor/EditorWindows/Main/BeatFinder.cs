@@ -59,7 +59,6 @@ public class BeatFinder : MonoBehaviour
             else
             {
                 float step = fl[index];
-                float betweenval;
                 if(step / 5 > maxtimestamp){
                     keys.Add(new Keyframe(step - maxtimestamp, min));
                 }else{
