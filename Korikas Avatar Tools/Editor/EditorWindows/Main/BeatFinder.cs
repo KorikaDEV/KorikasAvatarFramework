@@ -8,7 +8,6 @@ using KATStuff;
 
 public class BeatFinder : MonoBehaviour
 {
-
     public static void generateBeatAnimation(TextAsset text, float zoom, float blur, Color beatcolor, Color betweencolor, AudioClip audio)
     {
         GameObject source = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Korikas-Avatar-Tool/Korikas Avatar Tools/Examples/Prefabs/BeatFinderPrefab.prefab", typeof(GameObject));

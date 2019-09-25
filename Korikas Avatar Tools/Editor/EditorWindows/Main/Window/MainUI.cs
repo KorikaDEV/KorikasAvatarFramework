@@ -4,7 +4,6 @@ using KATStuff;
 
 public class MainUI : EditorWindow
 {
-
     static GameObject source;
     static GameObject destination;
     static GameObject beatfindersource;
@@ -41,7 +40,6 @@ public class MainUI : EditorWindow
     [MenuItem("Korikas Avatar Tools/Main")]
     public static void ShowWindow()
     {
-
         EditorWindow window = EditorWindow.GetWindow<MainUI>("KAT v2.0.0");
         window.minSize = new Vector2(265, 265);
     }
@@ -82,7 +80,6 @@ public class MainUI : EditorWindow
                 break;
         }
         EditorGUILayout.EndScrollView();
-
     }
 
     public void renderGenerationTab()
@@ -281,5 +278,5 @@ public class MainUI : EditorWindow
             background = fromRGB(209f, 189f, 169f);
             buttons = fromRGB(203f, 164f, 112f);
         }
-}
+    }
 }

@@ -27,7 +27,6 @@ namespace KATStuff
         }
         public static void PlayMotion(string path, string name, UnityEditor.Animations.AnimatorController ac)
         {
-
             UnityEditor.Animations.AnimatorStateMachine sm = ac.layers[0].stateMachine;
 
             for (int i = 0; i < sm.states.Length; i++)

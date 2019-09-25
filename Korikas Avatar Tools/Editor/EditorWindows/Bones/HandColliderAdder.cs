@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using KATStuff;
 
-public class HandColliderAdder : MonoBehaviour {
+public class HandColliderAdder : MonoBehaviour
+{
 	
     public static void addColliderIfDontExistsAndUpdate(GameObject g, Vector3 position, float size, bool addevery){
         Animator an = g.GetComponent<Animator>();
