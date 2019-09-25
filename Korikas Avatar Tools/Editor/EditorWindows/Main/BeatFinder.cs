@@ -28,14 +28,15 @@ public class BeatFinder : MonoBehaviour
         AddKeyFrames(typeof(ParticleSystem), fl, ac, "simulationSpeed", "example", 0.5f, 1f, 0.5f);
 
         ac.legacy = false;
-        AssetDatabase.CreateAsset(ac, "Assets/"+audio.name+".anim");
+        AvatarStructureBuilder.createFolder("Assets", "KATBeatFinderAnimations");
+        AssetDatabase.CreateAsset(ac, "Assets/KATBeatFinderAnimations/"+audio.name+".anim");
 
         source.GetComponent<AudioSource>().clip = audio;
         Animator a = source.GetComponent<Animator>();
-        UnityEditor.Animations.AnimatorController acnew = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath ("Assets/"+audio.name+".controller");
+        UnityEditor.Animations.AnimatorController acnew = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath ("Assets/KATBeatFinderAnimations/"+audio.name+".controller");
         a.runtimeAnimatorController = acnew;
         AnimatorController anc = a.runtimeAnimatorController as AnimatorController;
-        GestureDisplay.addMotionToControllerByPath("Assets/"+audio.name+".anim", anc);
+        GestureDisplay.addMotionToControllerByPath("Assets/KATBeatFinderAnimations/"+audio.name+".anim", anc);
     }
 
     private static void AddKeyFrames(Type kind, float[] fl, AnimationClip ac, string name, string path, float min, float max, float maxtimestamp)
@@ -44,7 +45,7 @@ public class BeatFinder : MonoBehaviour
         keys.Add(new Keyframe(0f, min));
         foreach (float f in fl)
         {
-            int index = System.Array.IndexOf(fl, f);
+            int index = Array.IndexOf(fl, f);
             if (index > 0)
             {
                 float step = ((fl[index] - fl[index - 1]));
