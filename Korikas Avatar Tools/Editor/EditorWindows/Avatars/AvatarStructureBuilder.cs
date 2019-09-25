@@ -118,9 +118,12 @@ public class AvatarStructureBuilder : MonoBehaviour
         }
     }
     public static void createKATFolder(string name){
-        if (!AssetDatabase.IsValidFolder("Assets/KATAvatars/" + nameval + "/" + name))
+        createFolder("Assets/KATAvatars/" + nameval, name);
+    }
+    public static void createFolder(string path, string name){
+        if (!AssetDatabase.IsValidFolder(path + "/" + name))
         {
-            AssetDatabase.CreateFolder("Assets/KATAvatars/" + nameval, name);
+            AssetDatabase.CreateFolder(path, name);
         }
     }
 

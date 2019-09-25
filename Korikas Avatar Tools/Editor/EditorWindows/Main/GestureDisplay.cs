@@ -48,6 +48,7 @@ namespace KATStuff
         {
             AnimationClip fist = (AnimationClip)AssetDatabase.LoadAssetAtPath(path, typeof(AnimationClip));
             Motion fistmotion = (Motion)fist as Motion;
+            ac.AddMotion(fistmotion);
         }
         public static GameObject getVRCSceneAvatar()
         {
