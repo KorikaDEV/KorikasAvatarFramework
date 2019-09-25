@@ -8,7 +8,6 @@ using KATStuff;
 
 public class BeatFinder : MonoBehaviour
 {
-
     public static void generateBeatAnimation(TextAsset text, float zoom, float blur, Color beatcolor, Color betweencolor, AudioClip audio)
     {
         GameObject source = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Korikas-Avatar-Tool/Korikas Avatar Tools/Examples/Prefabs/BeatFinderPrefab.prefab", typeof(GameObject));
@@ -53,7 +52,7 @@ public class BeatFinder : MonoBehaviour
                 if(step / 5 > maxtimestamp){
                     betweenval = (step - maxtimestamp) + fl[index - 1];
                 }else{
-                    betweenval = (step / 5) * 4 + fl[index - 1];
+                    betweenval = ((step / 5) * 4) + fl[index - 1];
                 }
                 keys.Add(new Keyframe(betweenval, min));
             }

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System;
 
-public class AvatarContentsCopy {
-
+public class AvatarContentsCopy
+{
 	public static Component CopyComponent(Component original, GameObject destination)
 	{
 		System.Type type = original.GetType();
@@ -60,7 +60,6 @@ public class AvatarContentsCopy {
 		converter(options, anSource, anDestination, HumanBodyBones.RightLowerArm, HumanBodyBones.RightHand);
 		//RIGHTHAND
 		converter(options, anSource, anDestination, HumanBodyBones.RightHand, HumanBodyBones.RightHand);
-
     }
 	public static void checkAndCopyParticleSystems(Animator from, Animator to, HumanBodyBones bone)
 	{
@@ -121,7 +120,6 @@ public class AvatarContentsCopy {
                 namelist[namelist.Length - 1] = name;
             }
         }
-
     }
 	public static void converter(bool[] kind, Animator from, Animator to, HumanBodyBones bone, HumanBodyBones noAnime){
 		if(kind[0] == true){
