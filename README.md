@@ -5,7 +5,7 @@
 ![](https://img.shields.io/codefactor/grade/github/KorikaDEV/KorikasAvatarPlugin/master.svg)
 ![](https://img.shields.io/github/downloads/KorikaDEV/KorikasAvatarPlugin/total.svg)
 
-- [What is KAT?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#what-is-kat)
+- [What is KAP?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#what-is-kat)
   - [current features](https://github.com/KorikaDEV/Korikas-Avatar-Tool#current-features)
   - [future implementations](https://github.com/KorikaDEV/Korikas-Avatar-Tool#future-implementations)
 - [I found a bug!](https://github.com/KorikaDEV/Korikas-Avatar-Tool#i-found-a-bug)
