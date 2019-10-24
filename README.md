@@ -25,7 +25,7 @@ It manages your projects structure, generates animations, copies contents from a
 - easily setting up the viewpoint, with a gameobject
 - generating a beat based animation with the beatfinder tool of audacity and KAP
 - playing any animation of the avatars override in play-mode
-- listing your avatars, that you have kat-imported and see their performance statistik
+- listing your avatars, that you have KAP-imported and see their performance statistik
 - delete avatars, open their scene or clean/locate their folder in the avatars list
 
 ### future implementations:
@@ -41,7 +41,7 @@ I really fell in love with VRChat based unity tools and thats why I am trying to
 ## How do I use it?
 There will be a tutorial!
 ### installation
-- download the latest version [here](https://github.com/KorikaDEV/Korikas-Avatar-Tool/releases/tag/2.0.0)!
+- download the latest version [here](https://github.com/KorikaDEV/KorikasAvatarPlugin/releases/tag/2.0.0)!
 - drag and drop it into your Unity project
 ### requirements
 - VRChats SDK
