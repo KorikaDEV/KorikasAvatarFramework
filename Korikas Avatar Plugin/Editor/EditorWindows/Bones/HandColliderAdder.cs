@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using KATStuff;
+using KAPStuff;
 
 public class HandColliderAdder : MonoBehaviour
 {

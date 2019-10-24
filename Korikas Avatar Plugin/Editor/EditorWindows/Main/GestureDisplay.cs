@@ -6,7 +6,7 @@ using UnityEditor.Animations;
 using UnityEditor;
 using VRCSDK2;
 
-namespace KATStuff
+namespace KAPStuff
 {
     public class GestureDisplay
     {
@@ -16,7 +16,7 @@ namespace KATStuff
             if (avatar != null)
             {
                 Animator animator = avatar.GetComponent<Animator>();
-                string path = "Assets/KATAvatars/" + avatar.name + "/Animations/";
+                string path = "Assets/KAPAvatars/" + avatar.name + "/Animations/";
                 if (animator.runtimeAnimatorController == null)
                 {
                     UnityEditor.Animations.AnimatorController ac = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath(path + "override.controller");

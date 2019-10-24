@@ -4,13 +4,13 @@ using UnityEditor.Animations;
 using System.Collections.Generic;
 using System.Collections;
 using System;
-using KATStuff;
+using KAPStuff;
 
 public class BeatFinder : MonoBehaviour
 {
     public static void generateBeatAnimation(TextAsset text, float zoom, float blur, Color beatcolor, Color betweencolor, AudioClip audio)
     {
-        GameObject source = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Korikas-Avatar-Tool/Korikas Avatar Tools/Examples/Prefabs/BeatFinderPrefab.prefab", typeof(GameObject));
+        GameObject source = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/KorikasAvatarPlugin/Korikas Avatar Plugin/Examples/Prefabs/BeatFinderPrefab.prefab", typeof(GameObject));
         string name = source.name;
         source = (GameObject)Instantiate(source, new Vector3(0, 0, 0), Quaternion.identity);
         source.name = name;
@@ -27,15 +27,15 @@ public class BeatFinder : MonoBehaviour
         AddKeyFrames(typeof(ParticleSystem), fl, ac, "simulationSpeed", "example", 0.5f, 1f, 0.5f);
 
         ac.legacy = false;
-        AvatarStructureBuilder.createFolder("Assets", "KATBeatFinderAnimations");
-        AssetDatabase.CreateAsset(ac, "Assets/KATBeatFinderAnimations/"+audio.name+".anim");
+        AvatarStructureBuilder.createFolder("Assets", "KAPBeatFinderAnimations");
+        AssetDatabase.CreateAsset(ac, "Assets/KAPBeatFinderAnimations/"+audio.name+".anim");
 
         source.GetComponent<AudioSource>().clip = audio;
         Animator a = source.GetComponent<Animator>();
-        UnityEditor.Animations.AnimatorController acnew = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath ("Assets/KATBeatFinderAnimations/"+audio.name+".controller");
+        UnityEditor.Animations.AnimatorController acnew = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath ("Assets/KAPBeatFinderAnimations/"+audio.name+".controller");
         a.runtimeAnimatorController = acnew;
         AnimatorController anc = a.runtimeAnimatorController as AnimatorController;
-        GestureDisplay.addMotionToControllerByPath("Assets/KATBeatFinderAnimations/"+audio.name+".anim", anc);
+        GestureDisplay.addMotionToControllerByPath("Assets/KAPBeatFinderAnimations/"+audio.name+".anim", anc);
     }
 
     private static void AddKeyFrames(Type kind, float[] fl, AnimationClip ac, string name, string path, float min, float max, float maxtimestamp)

@@ -13,7 +13,7 @@ public class CleanFolder
     ///<summary>
     public static void cleanFolder(string avatarname)
     {
-        path = "Assets/KATAvatars/" + avatarname + "/";
+        path = "Assets/KAPAvatars/" + avatarname + "/";
         List<string> files = new List<string>();
         var info = new DirectoryInfo(path);
         var fileInfo = info.GetFiles();

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEditor;
 using VRCSDK2;
-using KATStuff;
+using KAPStuff;
 
 [CustomEditor(typeof(ViewpointSetter))]
 public class ViewpointSetterEditor : Editor

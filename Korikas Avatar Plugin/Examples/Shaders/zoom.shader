@@ -3,7 +3,7 @@
 //Version 1.2
 //If you've got this without purchasing it, that's not nice :( *but who cares this whole site is full of pirated assets and shit so dont cry little boi*  using shaders you didn't purchase is like stealing avatars!(people still steal avatars? how big does your ego have to be to get mad over something like that lmao) Contact me at Neen#2693 if you found this posted somewhere for a reward!(ugh k)
 
-    Shader "KAT/zoom" {
+    Shader "KAP/zoom" {
 
         Properties {
         	[Header(Screen Shift)]

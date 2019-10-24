@@ -6,9 +6,9 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 
-namespace KATStuff
+namespace KAPStuff
 {
-    public class KatProfile{
+    public class KAPProfile{
     public string name;
     public int polys;
     public int boneamount;
@@ -22,29 +22,29 @@ namespace KATStuff
     public int audio_sources;
 	public PerformanceProfile perfP;
 
-    public KatProfile(GameObject obj){
+    public KAPProfile(GameObject obj){
         initProfile(obj);
     }
     public void delete(){
-        FileUtil.DeleteFileOrDirectory("Assets/KATAvatars/" + name);
+        FileUtil.DeleteFileOrDirectory("Assets/KAPAvatars/" + name);
         AssetDatabase.Refresh();
     }
     public void saveFile(){
         string json = JsonUtility.ToJson(this);
-        File.WriteAllText(Application.dataPath + "/KATAvatars/" + name + "/" + name + ".katprofile", json);
+        File.WriteAllText(Application.dataPath + "/KAPAvatars/" + name + "/" + name + ".KAPprofile", json);
     }
-    public static KatProfile fromFile(string name){
-        string json = File.ReadAllText(Application.dataPath + "/KATAvatars/" + name + "/" + name + ".katprofile");
-        KatProfile result = JsonUtility.FromJson<KatProfile>(json);
-		result.perfP = PerformanceProfile.fromFile(Application.dataPath + "/KATAvatars/" + name + "/");
+    public static KAPProfile fromFile(string name){
+        string json = File.ReadAllText(Application.dataPath + "/KAPAvatars/" + name + "/" + name + ".KAPprofile");
+        KAPProfile result = JsonUtility.FromJson<KAPProfile>(json);
+		result.perfP = PerformanceProfile.fromFile(Application.dataPath + "/KAPAvatars/" + name + "/");
 		return result;
     }
     public void openScene(){
         EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
-        EditorSceneManager.OpenScene("Assets/KATAvatars/" + name + "/" + name + ".unity");
+        EditorSceneManager.OpenScene("Assets/KAPAvatars/" + name + "/" + name + ".unity");
     }
     public void openFolder(){
-        UnityEngine.Object obj = AssetDatabase.LoadAssetAtPath("Assets/KATAvatars/" + name + "/" + name + ".unity", typeof(UnityEngine.Object));
+        UnityEngine.Object obj = AssetDatabase.LoadAssetAtPath("Assets/KAPAvatars/" + name + "/" + name + ".unity", typeof(UnityEngine.Object));
         Selection.activeObject = obj;
         EditorGUIUtility.PingObject(obj);
     }
@@ -73,22 +73,22 @@ namespace KATStuff
         this.lights = obj.GetComponentsInChildren<Light>().Length;
 		
 		this.perfP = new PerformanceProfile(this);
-		this.perfP.saveFile(Application.dataPath + "/KATAvatars/" + name + "/");
+		this.perfP.saveFile(Application.dataPath + "/KAPAvatars/" + name + "/");
 		saveFile();
     }
 
-    public static KatProfile[] getAllInProject(){
-        string path = "Assets/KATAvatars/";
+    public static KAPProfile[] getAllInProject(){
+        string path = "Assets/KAPAvatars/";
         List<string> files = new List<string>();
-        List<KatProfile> result = new List<KatProfile>();
+        List<KAPProfile> result = new List<KAPProfile>();
         var info = new DirectoryInfo(path);
         var fileInfo = info.GetFiles();
         foreach (FileInfo f in fileInfo)
         {
             if (f.ToString().Contains(".meta"))
             {
-                string fname = f.ToString().Split(new string[] { "KATAvatars\\" }, StringSplitOptions.None)[1].Replace(".meta", "");
-                if(AssetDatabase.IsValidFolder(path + fname) && File.Exists(f.ToString().Replace(".meta", "") + "\\" + fname + ".katprofile")){
+                string fname = f.ToString().Split(new string[] { "KAPAvatars\\" }, StringSplitOptions.None)[1].Replace(".meta", "");
+                if(AssetDatabase.IsValidFolder(path + fname) && File.Exists(f.ToString().Replace(".meta", "") + "\\" + fname + ".KAPprofile")){
                     files.Add(fname);
                 }
             }

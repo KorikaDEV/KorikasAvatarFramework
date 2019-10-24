@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEditor;
-using KATStuff;
+using KAPStuff;
 public class BonesUI : EditorWindow {
-	[MenuItem("Korikas Avatar Tools/Bones")]
+	[MenuItem("Korikas Avatar Plugin/Bones")]
     public static void ShowWindow()
     {
-        EditorWindow window = EditorWindow.GetWindow<BonesUI>("KATBones");
+        EditorWindow window = EditorWindow.GetWindow<BonesUI>("KAPBones");
         window.minSize = new Vector2(265, 265);
     }
 	

@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using KATStuff;
+using KAPStuff;
 
 [UnityEditor.InitializeOnLoad]
-static class KatProfiler
+static class KAPProfiler
 {
-    static KatProfiler()
+    static KAPProfiler()
     {
         UnityEditor.SceneManagement.EditorSceneManager.sceneSaving += OnSceneSaved;
     }
@@ -13,10 +13,10 @@ static class KatProfiler
     static void OnSceneSaved(Scene scene, string s)
     {
         if(GestureDisplay.getVRCSceneAvatar() != null){
-            KatProfile kp = new KatProfile(GestureDisplay.getVRCSceneAvatar());
+            KAPProfile kp = new KAPProfile(GestureDisplay.getVRCSceneAvatar());
             kp.saveFile();
         }else{
-            Debug.LogWarning("your avatar is hidden! you might make him visible again, so that KAT can save his performance statistics...");
+            Debug.LogWarning("your avatar is hidden! you might make him visible again, so that KAP can save his performance statistics...");
         }
     }
 }

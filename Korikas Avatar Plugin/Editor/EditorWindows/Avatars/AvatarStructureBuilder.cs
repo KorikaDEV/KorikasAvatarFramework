@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor.Animations;
 using VRCSDK2;
 using UnityEditor.SceneManagement;
-using KATStuff;
+using KAPStuff;
 
 public class AvatarStructureBuilder : MonoBehaviour
 {
@@ -19,21 +19,21 @@ public class AvatarStructureBuilder : MonoBehaviour
 
         nameval = selected.name;
 
-        if (!AssetDatabase.IsValidFolder("Assets/KATAvatars/" + nameval))
+        if (!AssetDatabase.IsValidFolder("Assets/KAPAvatars/" + nameval))
         {
-            AssetDatabase.CreateFolder("Assets/KATAvatars", nameval);
+            AssetDatabase.CreateFolder("Assets/KAPAvatars", nameval);
         }
-        createKATFolder("Animations");
-        createKATFolder("Audio");
-        createKATFolder("Materials");
-        createKATFolder("Textures");
-        createKATFolder("Shaders");
+        createKAPFolder("Animations");
+        createKAPFolder("Audio");
+        createKAPFolder("Materials");
+        createKAPFolder("Textures");
+        createKAPFolder("Shaders");
 
         //Generated Folders
         updateProgressBar("copying avatar...", 1.0f);
 
         string sourcepath = AssetDatabase.GetAssetPath(selected);
-        AssetDatabase.CopyAsset(sourcepath, "Assets/KATAvatars/" + nameval + "/" + nameval + ".fbx");
+        AssetDatabase.CopyAsset(sourcepath, "Assets/KAPAvatars/" + nameval + "/" + nameval + ".fbx");
 
         //Copied Avatar
         updateProgressBar("generating animation files...", 1.0f);
@@ -44,13 +44,13 @@ public class AvatarStructureBuilder : MonoBehaviour
         updateProgressBar("instantiating avatar...", 1.0f);
 
         EditorApplication.NewScene();
-        GameObject newobj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/KATAvatars/" + nameval + "/" + nameval + ".fbx", typeof(GameObject));
+        GameObject newobj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/KAPAvatars/" + nameval + "/" + nameval + ".fbx", typeof(GameObject));
         newobj = (GameObject)Instantiate(newobj, new Vector3(0, 0, 0), Quaternion.identity);
 
         //Instantiated Avatar
         updateProgressBar("instantiating viewpointsetter...", 1.0f);
 
-        GameObject view = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Korikas-Avatar-Tool/Korikas Avatar Tools/Examples/Prefabs/ViewpointSetter.prefab", typeof(GameObject));
+        GameObject view = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/KorikasAvatarPlugin/Korikas Avatar Plugin/Examples/Prefabs/ViewpointSetter.prefab", typeof(GameObject));
         view = (GameObject)Instantiate(view, new Vector3(0, 0, 0), Quaternion.identity);
         view.name = "ViewpointSetter";
 
@@ -61,7 +61,7 @@ public class AvatarStructureBuilder : MonoBehaviour
         newobjanimator.name = "animator";
         newobjanimator.SetActive(false);
         Animator animator = newobjanimator.GetComponent<Animator>();
-        string path = "Assets/KATAvatars/" + nameval + "/Animations/";
+        string path = "Assets/KAPAvatars/" + nameval + "/Animations/";
         if (animator.runtimeAnimatorController == null)
         {
             UnityEditor.Animations.AnimatorController acnew = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath(path + "animator.controller");
@@ -77,20 +77,20 @@ public class AvatarStructureBuilder : MonoBehaviour
         GestureDisplay.addMotionToControllerByPath(path + "handopen.anim", ac);
 
         //Instantiated Animator
-        updateProgressBar("creating katprofile...", 1.0f);
+        updateProgressBar("creating KAPprofile...", 1.0f);
 
         newobj.name = nameval;
 
-        KatProfile kp = new KatProfile(newobj);
+        KAPProfile kp = new KAPProfile(newobj);
         kp.saveFile();
 
-        //Created Katprofile
+        //Created KAPprofile
         updateProgressBar("deleting old file and adding the VRC_AvatarDescriptor...", 1);
 
         AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(selected));
 
         VRC_AvatarDescriptor vrcad = newobj.AddComponent(typeof(VRC_AvatarDescriptor)) as VRC_AvatarDescriptor;
-        AnimatorOverrideController Ovrd = (AnimatorOverrideController)AssetDatabase.LoadAssetAtPath("Assets/KATAvatars/" + nameval + "/Animations/" + nameval + ".overrideController", typeof(AnimatorOverrideController));
+        AnimatorOverrideController Ovrd = (AnimatorOverrideController)AssetDatabase.LoadAssetAtPath("Assets/KAPAvatars/" + nameval + "/Animations/" + nameval + ".overrideController", typeof(AnimatorOverrideController));
         vrcad.CustomSittingAnims = Ovrd;
         vrcad.CustomStandingAnims = Ovrd;
 
@@ -99,7 +99,7 @@ public class AvatarStructureBuilder : MonoBehaviour
         //Deleted old File and added the VRC_AvatarDescriptor
         updateProgressBar("saving scene and refreshing files...", 1.0f);
 
-        EditorApplication.SaveScene("Assets/KATAvatars/" + nameval + "/" + nameval + ".unity");
+        EditorApplication.SaveScene("Assets/KAPAvatars/" + nameval + "/" + nameval + ".unity");
 		AssetDatabase.Refresh();
 
         //Saved Scene and refreshed Files
@@ -111,14 +111,14 @@ public class AvatarStructureBuilder : MonoBehaviour
         EditorUtility.DisplayProgressBar("Avatar Structure Building", task, progressval / 8.0f);
     }
 
-    public static void createKATRootFolder(){
-        if (!AssetDatabase.IsValidFolder("Assets/KATAvatars"))
+    public static void createKAPRootFolder(){
+        if (!AssetDatabase.IsValidFolder("Assets/KAPAvatars"))
         {
-            AssetDatabase.CreateFolder("Assets", "KATAvatars");
+            AssetDatabase.CreateFolder("Assets", "KAPAvatars");
         }
     }
-    public static void createKATFolder(string name){
-        createFolder("Assets/KATAvatars/" + nameval, name);
+    public static void createKAPFolder(string name){
+        createFolder("Assets/KAPAvatars/" + nameval, name);
     }
     public static void createFolder(string path, string name){
         if (!AssetDatabase.IsValidFolder(path + "/" + name))
@@ -127,12 +127,12 @@ public class AvatarStructureBuilder : MonoBehaviour
         }
     }
     public static AnimationClip ExampleAnim(){
-        return (AnimationClip)AssetDatabase.LoadAssetAtPath("Assets/Korikas-Avatar-Tool/Korikas Avatar Tools/Examples/Animations/ExampleGesture.anim", typeof(AnimationClip));
+        return (AnimationClip)AssetDatabase.LoadAssetAtPath("Assets/KorikasAvatarPlugin/Korikas Avatar Plugin/Examples/Animations/ExampleGesture.anim", typeof(AnimationClip));
     }
     public static void CreateAnimationFiles(string name)
     {
-        string path = "Assets/KATAvatars/" + name + "/Animations/";
-        string examplepath = "Assets/Korikas-Avatar-Tool/Korikas Avatar Tools/Examples/Animations/ExampleGesture.anim";
+        string path = "Assets/KAPAvatars/" + name + "/Animations/";
+        string examplepath = "Assets/KorikasAvatarPlugin/Korikas Avatar Plugin/Examples/Animations/ExampleGesture.anim";
         AssetDatabase.CopyAsset("Assets/VRCSDK/Examples/Sample Assets/Animation/CustomOverrideEmpty.overrideController", path + name + ".overrideController");
         AssetDatabase.CopyAsset(examplepath, path + "fingerpoint.anim");
         AssetDatabase.CopyAsset(examplepath, path + "fist.anim");

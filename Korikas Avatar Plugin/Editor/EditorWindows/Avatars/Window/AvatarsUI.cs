@@ -1,24 +1,24 @@
 using UnityEngine;
 using UnityEditor;
-using KATStuff;
+using KAPStuff;
 public class AvatarsUI : EditorWindow
 {
     static Vector2 scrollPosition = Vector2.zero;
     static GameObject model;
 
-    [MenuItem("Korikas Avatar Tools/Avatars")]
+    [MenuItem("Korikas Avatar Plugin/Avatars")]
     public static void ShowWindow()
     {
-        AvatarStructureBuilder.createKATRootFolder();
-        EditorWindow window = EditorWindow.GetWindow<AvatarsUI>("KATAvatars");
+        AvatarStructureBuilder.createKAPRootFolder();
+        EditorWindow window = EditorWindow.GetWindow<AvatarsUI>("KAPAvatars");
         window.minSize = new Vector2(265, 265);
     }
     void OnGUI()
     {
         scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true,  GUILayout.Width(position.width),  GUILayout.Height(position.height - 74));
         EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-        KatProfile[] kps = KatProfile.getAllInProject();
-        foreach (KatProfile item in kps)
+        KAPProfile[] kps = KAPProfile.getAllInProject();
+        foreach (KAPProfile item in kps)
         {
             AvatarsContainer.initKPValue(item.name);
 			GUILayout.Label(item.name, EditorStyles.boldLabel);

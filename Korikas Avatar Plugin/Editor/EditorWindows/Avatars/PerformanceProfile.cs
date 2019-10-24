@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-namespace KATStuff
+namespace KAPStuff
 {
 public class PerformanceProfile {
 	public int polysperf;
@@ -16,7 +16,7 @@ public class PerformanceProfile {
 	public int lightsperf;
 	public int audio_sourcesperf;
 	
-	public PerformanceProfile(KatProfile kp){
+	public PerformanceProfile(KAPProfile kp){
 		polysperf = rate(kp.polys, 32000, 70000, 70000, 70000);
         boneamountperf = rate(kp.boneamount, 75, 150, 256, 400);
         dynboneamountperf = rate(kp.dynboneamount, 0, 16, 32, 256);

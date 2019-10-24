@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using KATStuff;
+using KAPStuff;
 
 public class MainUI : EditorWindow
 {
@@ -37,7 +37,7 @@ public class MainUI : EditorWindow
     static float blur = 1;
     static AudioClip audio;
 
-    [MenuItem("Korikas Avatar Tools/Main")]
+    [MenuItem("Korikas Avatar Plugin/Main")]
     public static void ShowWindow()
     {
         EditorWindow window = EditorWindow.GetWindow<MainUI>("KAP v3.0.0");
@@ -53,7 +53,7 @@ public class MainUI : EditorWindow
         GUI.Label(new Rect(200, 200, 100, 100), "");
         GUI.TextField(new Rect(20, 20, 70, 30), "");
         GUI.backgroundColor = buttons;
-        Texture logo = (Texture)AssetDatabase.LoadAssetAtPath("Assets/Korikas-Avatar-Tool/Korikas Avatar Tools/logo.png", typeof(Texture));
+        Texture logo = (Texture)AssetDatabase.LoadAssetAtPath("Assets/KorikasAvatarPlugin/Korikas Avatar Plugin/logo.png", typeof(Texture));
         GUI.DrawTexture(new Rect(0, 0, position.width, 70), logo, ScaleMode.ScaleAndCrop);
 
         string[] toolbarString = { "gestures", "generate", "copy", "credits" };
