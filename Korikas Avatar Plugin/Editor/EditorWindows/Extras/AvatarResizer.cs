@@ -14,13 +14,16 @@ public class AvatarResizer : MonoBehaviour {
     }
     public static float getCurrentSize(){
         GameObject avatar = GestureDisplay.getVRCSceneAvatar();
-
-        Renderer[] rr = avatar.GetComponentsInChildren<Renderer>();
-        Bounds b = rr[0].bounds;
-        foreach(Renderer r in rr)
-        {
-            b.Encapsulate(r.bounds);
+        if(avatar != null){
+            Renderer[] rr = avatar.GetComponentsInChildren<Renderer>();
+            Bounds b = rr[0].bounds;
+            foreach(Renderer r in rr)
+            {
+                b.Encapsulate(r.bounds);
+            }
+            return b.size.y;
+        }else{
+            return 0.0f;
         }
-        return b.size.y;
     }
 }

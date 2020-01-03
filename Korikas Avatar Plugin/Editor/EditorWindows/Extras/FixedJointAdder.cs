@@ -29,12 +29,16 @@ public class FixedJointAdder : MonoBehaviour {
         g.transform.position = hand.position;
     }
     public static bool hasFixedJoints(){
-        bool result = false;
-        GameObject g = GestureDisplay.getVRCSceneAvatar();
-        FixedJoint[] fxjs = g.transform.GetComponentsInChildren<FixedJoint>();
-        if(fxjs.Length > 0){
-            result = true;
+        if(GestureDisplay.getVRCSceneAvatar() != null){
+            bool result = false;
+            GameObject g = GestureDisplay.getVRCSceneAvatar();
+            FixedJoint[] fxjs = g.transform.GetComponentsInChildren<FixedJoint>();
+            if(fxjs.Length > 0){
+                result = true;
+            }
+            return result;
+        }else{
+            return false;
         }
-        return result;
     }
 }

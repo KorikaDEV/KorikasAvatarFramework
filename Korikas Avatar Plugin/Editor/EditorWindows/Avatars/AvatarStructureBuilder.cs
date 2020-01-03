@@ -55,28 +55,6 @@ public class AvatarStructureBuilder : MonoBehaviour
         view.name = "ViewpointSetter";
 
         //Instantiated ViewpointSetter
-        updateProgressBar("instantiating animator...", 1.0f);
-
-        GameObject newobjanimator = (GameObject)Instantiate(newobj, new Vector3(0, 0, 0), Quaternion.identity);
-        newobjanimator.name = "animator";
-        newobjanimator.SetActive(false);
-        Animator animator = newobjanimator.GetComponent<Animator>();
-        string path = "Assets/KAPAvatars/" + nameval + "/Animations/";
-        if (animator.runtimeAnimatorController == null)
-        {
-            UnityEditor.Animations.AnimatorController acnew = UnityEditor.Animations.AnimatorController.CreateAnimatorControllerAtPath(path + "animator.controller");
-            animator.runtimeAnimatorController = acnew;
-        }
-        AnimatorController ac = animator.runtimeAnimatorController as AnimatorController;
-        GestureDisplay.addMotionToControllerByPath(path + "fingerpoint.anim", ac);
-        GestureDisplay.addMotionToControllerByPath(path + "fist.anim", ac);
-        GestureDisplay.addMotionToControllerByPath(path + "victory.anim", ac);
-        GestureDisplay.addMotionToControllerByPath(path + "handgun.anim", ac);
-        GestureDisplay.addMotionToControllerByPath(path + "thumbsup.anim", ac);
-        GestureDisplay.addMotionToControllerByPath(path + "rocknroll.anim", ac);
-        GestureDisplay.addMotionToControllerByPath(path + "handopen.anim", ac);
-
-        //Instantiated Animator
         updateProgressBar("creating KAPprofile...", 1.0f);
 
         newobj.name = nameval;
@@ -108,7 +86,7 @@ public class AvatarStructureBuilder : MonoBehaviour
 
     public static void updateProgressBar(string task, float addvalue){
         progressval = progressval + addvalue;
-        EditorUtility.DisplayProgressBar("Avatar Structure Building", task, progressval / 8.0f);
+        EditorUtility.DisplayProgressBar("Avatar Structure Builder", task, progressval / 8.0f);
     }
 
     public static void createKAPRootFolder(){
@@ -164,6 +142,7 @@ public class AvatarStructureBuilder : MonoBehaviour
             SkinnedMeshRenderer head = meshes[0];
             Mesh m = head.sharedMesh;
             string[] blendshapes = { "sil", "pp", "ff", "th", "dd", "kk", "ch", "ss", "nn", "rr", "aa", "_e", "ih", "oh", "ou" };
+            string[] appliedbss = { "-none-", "-none-", "-none-", "-none-", "-none-", "-none-", "-none-", "-none-", "-none-", "-none-", "-none-", "-none-", "-none-", "-none-", "-none-" };
             for (int i = 0; i < m.blendShapeCount; i++)
             {
                 string name = m.GetBlendShapeName(i);
@@ -171,11 +150,15 @@ public class AvatarStructureBuilder : MonoBehaviour
                 {
                     if (name.Contains(blendshapes[ii]))
                     {
-                        blendshapes[ii] = name;
+                        appliedbss[ii] = name;
                     }
                 }
             }
-            vrcad.VisemeBlendShapes = blendshapes;
+            if(m.blendShapeCount >= 14){
+                vrcad.VisemeBlendShapes = appliedbss;
+            }else{
+                vrcad.lipSync = VRC_AvatarDescriptor.LipSyncStyle.Default;
+            }
         }
     }
 }
