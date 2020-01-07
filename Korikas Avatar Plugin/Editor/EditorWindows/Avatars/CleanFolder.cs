@@ -33,6 +33,7 @@ public class CleanFolder
             moveFileIfContains(s, ".shader", "Shaders");
             moveFileIfContains(s, ".mp3", "Audio");
             moveFileIfContains(s, ".wav", "Audio");
+            moveFileIfContains(s, ".controller", "Controllers");
         }
     }
 

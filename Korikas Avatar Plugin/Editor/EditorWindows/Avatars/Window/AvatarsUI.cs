@@ -16,12 +16,13 @@ public class AvatarsUI : EditorWindow
     void OnGUI()
     {
         scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true,  GUILayout.Width(position.width),  GUILayout.Height(position.height - 74));
-        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+        GuiLine(2);
         KAPProfile[] kps = KAPProfile.getAllInProject();
         foreach (KAPProfile item in kps)
         {
             AvatarsContainer.initKPValue(item.name);
-			GUILayout.Label(item.name, EditorStyles.boldLabel);
+            addButton("Avatar Icon", 3, 0, 20, true);
+			GUILayout.Label("    " + item.name, EditorStyles.boldLabel);
 			GUI.color = PerformanceProfile.doubleToPerfColor(item.perfP.performance());
 			Rect r = EditorGUILayout.BeginVertical();
 			EditorGUI.ProgressBar(r, ((4 - item.perfP.performance()) / 4), PerformanceProfile.doubleToPerfName(item.perfP.performance()) + " (" + (4 - item.perfP.performance()) + ")");
@@ -30,27 +31,35 @@ public class AvatarsUI : EditorWindow
 			GUI.color = Color.white;
 			AvatarsContainer.kpsfoldout[item.name] = EditorGUILayout.Foldout(AvatarsContainer.kpsfoldout[item.name], "perfomance details"); 
 			if(AvatarsContainer.kpsfoldout[item.name]){
-				GUI.color = PerformanceProfile.doubleToPerfColor(item.perfP.polysperf);
-				GUILayout.Label(item.polys + " polygons");
-				GUI.color = PerformanceProfile.doubleToPerfColor(item.perfP.boneamountperf);
-				GUILayout.Label(item.boneamount + " bones");
-				GUI.color = PerformanceProfile.doubleToPerfColor(item.perfP.meshrenderersperf);
-				GUILayout.Label(item.meshrenderers + " meshrenderer");
-				GUI.color = PerformanceProfile.doubleToPerfColor(item.perfP.dynboneamountperf);
-				GUILayout.Label(item.dynboneamount + " dynbones");
-				GUI.color = PerformanceProfile.doubleToPerfColor(item.perfP.dynbonecollidersperf);
-				GUILayout.Label(item.dynbonecolliders + " dynbonecolliders");
-				GUI.color = PerformanceProfile.doubleToPerfColor(item.perfP.particle_systemsperf);
-				GUILayout.Label(item.particle_systems + " particles");
-				GUI.color = PerformanceProfile.doubleToPerfColor(item.perfP.audio_sourcesperf);
-				GUILayout.Label(item.audio_sources + " audios");
-				GUI.color = PerformanceProfile.doubleToPerfColor(item.perfP.lightsperf);
-				GUILayout.Label(item.lights + " lights");
-				GUI.color = PerformanceProfile.doubleToPerfColor(item.perfP.animatorsperf);
-				GUILayout.Label(item.animators + " animators");
-				GUI.color = PerformanceProfile.doubleToPerfColor(item.perfP.clothperf);
-				GUILayout.Label(item.cloth + " cloths");
-				GUI.color = Color.white;
+                GUILayout.BeginHorizontal();
+                addPerfSection(item.polys, item.perfP.polysperf, "PolygonCollider2D Icon");
+                DrawBreak();
+                addPerfSection(item.boneamount, item.perfP.boneamountperf, "Transform Icon");
+                GUILayout.EndHorizontal();
+                GuiLine();
+                GUILayout.BeginHorizontal();
+                addPerfSection(item.meshrenderers, item.perfP.meshrenderersperf, "MeshRenderer Icon");
+                DrawBreak();
+                addPerfSection(item.dynboneamount, item.perfP.dynboneamountperf, "dll Script Icon");
+                GUILayout.EndHorizontal();
+                GuiLine();
+                GUILayout.BeginHorizontal();
+                addPerfSection(item.dynbonecolliders, item.perfP.dynbonecollidersperf, "sv_icon_dot4_pix16_gizmo");
+                DrawBreak();
+                addPerfSection(item.particle_systems, item.perfP.particle_systemsperf, "d_ParticleSystem Icon");
+                GUILayout.EndHorizontal();
+                GuiLine();
+                GUILayout.BeginHorizontal();
+                addPerfSection(item.audio_sources, item.perfP.audio_sourcesperf, "AudioSource Icon");
+                DrawBreak();
+                addPerfSection(item.lights, item.perfP.lightsperf, "Light Icon");
+                GUILayout.EndHorizontal();
+                GuiLine();
+                GUILayout.BeginHorizontal();
+                addPerfSection(item.animators, item.perfP.animatorsperf, "Animator Icon");
+                DrawBreak();
+                addPerfSection(item.cloth, item.perfP.clothperf, "Cloth Icon");
+                GUILayout.EndHorizontal();
 			}
 			GUILayout.Space(5);
 			GUILayout.BeginHorizontal();
@@ -60,7 +69,7 @@ public class AvatarsUI : EditorWindow
 			AvatarsContainer.kpsdelete[item.name] = GUILayout.Button("delete");
             GUI.backgroundColor = Color.white;
 			GUILayout.EndHorizontal();
-            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+            GuiLine(2);
 
             if(AvatarsContainer.kpsscene[item.name]){
                 item.openScene();
@@ -74,7 +83,8 @@ public class AvatarsUI : EditorWindow
             }
         }
         GUILayout.EndScrollView();
-        GUILayout.Label("add avatar", EditorStyles.boldLabel);
+        addButton("Avatar Icon", 3, 0, 20, true);
+        GUILayout.Label("    add avatar", EditorStyles.boldLabel);
 
         model = (GameObject)EditorGUILayout.ObjectField("select your avatar:", model, typeof(GameObject), true);
         if (model != null)
@@ -91,5 +101,35 @@ public class AvatarsUI : EditorWindow
             GUILayout.Button("please select a .fbx");
             GUI.enabled = true;
         }
+    }
+
+    void addButton(string name, float down, float right, float wh, bool underlast){
+        Rect lastrec = GUILayoutUtility.GetLastRect();
+        if(underlast == true){
+            GUI.DrawTexture(new Rect(0, lastrec.position.y + lastrec.height + down, wh, wh), EditorGUIUtility.FindTexture(name));
+        }else{
+            GUI.DrawTexture(new Rect(lastrec.position.x + lastrec.width + right,  lastrec.position.y + down, wh, wh), EditorGUIUtility.FindTexture(name));
+        }
+    }
+
+    void addPerfSection(float amount, double perf, string iconname){
+        float width = Screen.width * 0.9f;
+        GUI.color = PerformanceProfile.doubleToPerfColor(perf);
+        GUILayout.Label(amount + "", GUILayout.Width(width / 2));
+        GUI.color = Color.white;
+        addButton(iconname, 0, -20, 15, false);
+    }
+
+    void GuiLine( int i_height = 1 )
+    {
+        Rect rect = EditorGUILayout.GetControlRect(false, i_height );
+        rect.height = i_height;
+        EditorGUI.DrawRect(rect, new Color ( 0.5f,0.5f,0.5f, 1 ) );
+    }
+
+    void DrawBreak(){
+        Rect lastrec = GUILayoutUtility.GetLastRect();
+        Rect newrec = new Rect(lastrec.position.x + lastrec.width, lastrec.position.y, 1, lastrec.height);
+        EditorGUI.DrawRect(newrec, new Color ( 0.5f,0.5f,0.5f, 1 ) );
     }
 }
