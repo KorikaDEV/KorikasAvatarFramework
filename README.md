@@ -28,11 +28,10 @@ It manages your projects structure, generates animations, copies contents from a
 - playing any animation of the avatars override in play-mode
 - listing your avatars, that you have KAP-imported and see their performance statistik
 - delete avatars, open their scene or clean/locate their folder in the avatars list
-
-### future implementations:
-- a animator for easy keyframing
 - hand-collider adding through UI with a possability to change the size and see their size in realtime
 - automatic collider adding to every dynamic bone on the model
+
+### future implementations:
 - automatic sdk updater, that can be toggled
 
 ## I found a bug!
