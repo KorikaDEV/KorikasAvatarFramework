@@ -9,7 +9,7 @@
 - [What is KAP?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#what-is-kat)
   - [current features](https://github.com/KorikaDEV/Korikas-Avatar-Tool#current-features)
   - [future implementations](https://github.com/KorikaDEV/Korikas-Avatar-Tool#future-implementations)
-- [I found a bug!](https://github.com/KorikaDEV/Korikas-Avatar-Tool#i-found-a-bug)
+- [Found a bug?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#found-a-bug)
 - [Where are the ideas coming from?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#where-are-the-ideas-coming-from)
 - [How do I use it?](https://github.com/KorikaDEV/Korikas-Avatar-Tool#how-do-i-use-it)
   - [installation](https://github.com/KorikaDEV/Korikas-Avatar-Tool#installation)
@@ -26,7 +26,7 @@ It manages your projects structure, generates animations, copies contents from a
 - easily setting up the viewpoint, with a gameobject
 - generating a beat based animation with the beatfinder tool of audacity and KAP
 - playing any animation of the avatars override in play-mode
-- listing your avatars, that you have KAP-imported and see their performance statistik
+- listing your avatars, that you have KAP-imported and see their performance statistics
 - delete avatars, open their scene or clean/locate their folder in the avatars list
 - hand-collider adding through UI with a possability to change the size and see their size in realtime
 - automatic collider adding to every dynamic bone on the model
@@ -34,14 +34,14 @@ It manages your projects structure, generates animations, copies contents from a
 ### future implementations:
 - automatic sdk updater, that can be toggled
 
-## I found a bug!
-Congratulations! You're able to earn a costum discord role on my server, by telling me everything about the bug you found in #🐈need-help-with-kap! Here is the invite: [Discord](https://discord.gg/z2SmFqg)
+## Found a bug?
+Just tell me about it on my discord in #🐈need-help-with-kap! Here is the [invite](https://discord.gg/z2SmFqg).
 ## Where are the ideas coming from?
 I really fell in love with VRChat based unity tools and thats why I am trying to gather them all into one usefull plugin. Thats the reason, why you will find some features in other projects based on VRChat! That doesnt mean, that I steal code. Everything within this project is self-implemented and I wish, that where was some kind of way, to show you that Im not stealing your credentails!
 ## How do I use it?
 There will be a tutorial!
 ### installation
-- download the latest version [here](https://github.com/KorikaDEV/KorikasAvatarPlugin/releases/tag/2.0.0)!
+- download the latest version [here](https://github.com/KorikaDEV/KorikasAvatarPlugin/releases)!
 - drag and drop it into your Unity project
 ### requirements
 - VRChats SDK
