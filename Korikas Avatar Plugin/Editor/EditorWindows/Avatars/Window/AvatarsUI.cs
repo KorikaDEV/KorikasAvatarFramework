@@ -21,7 +21,7 @@ public class AvatarsUI : EditorWindow
         foreach (KAPProfile item in kps)
         {
             AvatarsContainer.initKPValue(item.name);
-            addButton("Avatar Icon", 3, 0, 20, true);
+            addButton("avatar", 3, 0, 20, true);
 			GUILayout.Label("    " + item.name, EditorStyles.boldLabel);
 			GUI.color = PerformanceProfile.doubleToPerfColor(item.perfP.performance());
 			Rect r = EditorGUILayout.BeginVertical();
@@ -32,33 +32,33 @@ public class AvatarsUI : EditorWindow
 			AvatarsContainer.kpsfoldout[item.name] = EditorGUILayout.Foldout(AvatarsContainer.kpsfoldout[item.name], "details"); 
 			if(AvatarsContainer.kpsfoldout[item.name]){
                 GUILayout.BeginHorizontal();
-                addPerfSection(item.polys, item.perfP.polysperf, "PolygonCollider2D Icon");
+                addPerfSection(item.polys, item.perfP.polysperf, "polygon");
                 DrawBreak();
-                addPerfSection(item.boneamount, item.perfP.boneamountperf, "Transform Icon");
+                addPerfSection(item.boneamount, item.perfP.boneamountperf, "bone");
                 GUILayout.EndHorizontal();
                 GuiLine();
                 GUILayout.BeginHorizontal();
-                addPerfSection(item.meshrenderers, item.perfP.meshrenderersperf, "MeshRenderer Icon");
+                addPerfSection(item.meshrenderers, item.perfP.meshrenderersperf, "mesh");
                 DrawBreak();
-                addPerfSection(item.dynboneamount, item.perfP.dynboneamountperf, "dll Script Icon");
+                addPerfSection(item.dynboneamount, item.perfP.dynboneamountperf, "dynamic_bone");
                 GUILayout.EndHorizontal();
                 GuiLine();
                 GUILayout.BeginHorizontal();
-                addPerfSection(item.dynbonecolliders, item.perfP.dynbonecollidersperf, "sv_icon_dot4_pix16_gizmo");
+                addPerfSection(item.dynbonecolliders, item.perfP.dynbonecollidersperf, "dynamic_bone_collider");
                 DrawBreak();
-                addPerfSection(item.particle_systems, item.perfP.particle_systemsperf, "d_ParticleSystem Icon");
+                addPerfSection(item.particle_systems, item.perfP.particle_systemsperf, "particle");
                 GUILayout.EndHorizontal();
                 GuiLine();
                 GUILayout.BeginHorizontal();
-                addPerfSection(item.audio_sources, item.perfP.audio_sourcesperf, "AudioSource Icon");
+                addPerfSection(item.audio_sources, item.perfP.audio_sourcesperf, "audio");
                 DrawBreak();
-                addPerfSection(item.lights, item.perfP.lightsperf, "Light Icon");
+                addPerfSection(item.lights, item.perfP.lightsperf, "light_source");
                 GUILayout.EndHorizontal();
                 GuiLine();
                 GUILayout.BeginHorizontal();
-                addPerfSection(item.animators, item.perfP.animatorsperf, "Animator Icon");
+                addPerfSection(item.animators, item.perfP.animatorsperf, "animator");
                 DrawBreak();
-                addPerfSection(item.cloth, item.perfP.clothperf, "Cloth Icon");
+                addPerfSection(item.cloth, item.perfP.clothperf, "cloth");
                 GUILayout.EndHorizontal();
                 GUILayout.Space(5);
                 GUILayout.BeginHorizontal();
@@ -83,7 +83,7 @@ public class AvatarsUI : EditorWindow
             }
         }
         GUILayout.EndScrollView();
-        addButton("Avatar Icon", 3, 0, 20, true);
+        addButton("avatar", 3, 0, 20, true);
         GUILayout.Label("    add avatar", EditorStyles.boldLabel);
 
         model = (GameObject)EditorGUILayout.ObjectField("select your avatar:", model, typeof(GameObject), true);
@@ -105,11 +105,9 @@ public class AvatarsUI : EditorWindow
 
     void addButton(string name, float down, float right, float wh, bool underlast){
         Rect lastrec = GUILayoutUtility.GetLastRect();
-        if(underlast == true){
-            GUI.DrawTexture(new Rect(0, lastrec.position.y + lastrec.height + down, wh, wh), EditorGUIUtility.FindTexture(name));
-        }else{
-            GUI.DrawTexture(new Rect(lastrec.position.x + lastrec.width + right,  lastrec.position.y + down, wh, wh), EditorGUIUtility.FindTexture(name));
-        }
+        Texture2D tex = (Texture2D)AssetDatabase.LoadAssetAtPath("Assets/KorikasAvatarPlugin/Korikas Avatar Plugin/Examples/Icons/" + name + ".png", typeof(Texture2D));
+        if(underlast == true){GUI.DrawTexture(new Rect(0, lastrec.position.y + lastrec.height + down, wh, wh), tex);
+        }else{GUI.DrawTexture(new Rect(lastrec.position.x + lastrec.width + right,  lastrec.position.y + down, wh, wh), tex);}
     }
 
     void addPerfSection(float amount, double perf, string iconname){
