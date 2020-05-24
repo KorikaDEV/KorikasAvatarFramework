@@ -56,7 +56,7 @@ public class MainUI : EditorWindow
         Texture logo = (Texture)AssetDatabase.LoadAssetAtPath("Assets/KorikasAvatarPlugin/Korikas Avatar Plugin/logo.png", typeof(Texture));
         GUI.DrawTexture(new Rect(0, 0, position.width, 70), logo, ScaleMode.ScaleAndCrop);
 
-        string[] toolbarString = { "gestures", "generate", "copy", "credits" };
+        string[] toolbarString = { "gestures", "copy", "credits" };
         toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarString);
 
         GUILayout.Space(50);
@@ -69,45 +69,13 @@ public class MainUI : EditorWindow
                 break;
             case 1:
                 toolbarInt = 1;
-                renderGenerationTab();
-                break;
-            case 2:
-                toolbarInt = 2;
                 RenderCopyContentsTab();
                 break;
-            case 3:
+            case 2:
                 RenderCreditsTab();
                 break;
         }
         EditorGUILayout.EndScrollView();
-    }
-
-    public void renderGenerationTab()
-    {
-        GUILayout.Label("generate beatfinder animation", EditorStyles.boldLabel);
-        beatfinder = (TextAsset)EditorGUILayout.ObjectField("your beatfinder file:", beatfinder, typeof(TextAsset), true);
-        audio = (AudioClip)EditorGUILayout.ObjectField("your audio:", audio, typeof(AudioClip), true);
-        bool beatbutton = false;
-        beatcolor = EditorGUILayout.ColorField("beatcolor:", beatcolor);
-        betweencolor = EditorGUILayout.ColorField("color:", betweencolor);
-        GUILayout.Label("zoom:");
-        zoom = EditorGUILayout.Slider(zoom, 1, 2);
-        GUILayout.Label("blur:");
-        blur = EditorGUILayout.Slider(blur, 0, 5);
-        if (!(audio == null || beatfinder == null))
-        {
-            beatbutton = GUILayout.Button("generate beatfinder animation");
-        }
-        else
-        {
-            GUI.enabled = false;
-            beatbutton = GUILayout.Button("somethings missing");
-            GUI.enabled = true;
-        }
-        if (beatbutton)
-        {
-            BeatFinder.generateBeatAnimation(beatfinder, zoom, blur, beatcolor, betweencolor, audio);
-        }
     }
 
     public void RenderCopyContentsTab()

@@ -25,6 +25,10 @@ namespace UnityEngine.UI
             Debug.Log("showed a gameobject");
         }
 
+        public void gb_hideGameObject(GameObject g){
+            Debug.Log("hided a gameobject");
+        }
+
         public void addTask(){
             UnityAction methodDelegate = System.Delegate.CreateDelegate (typeof(UnityAction), this, "gb_hideEverything") as UnityAction;
             UnityEditor.Events.UnityEventTools.AddPersistentListener (onGestureBuild, methodDelegate);
